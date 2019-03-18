@@ -7,10 +7,12 @@
 
 .vertical-menu {
   display:inline-block;
+  margin-top:1em;
+  margine-left:0.5em;
   vertical-align:top;
   border:0.5px solid #000000; 
   width: 200px;
-  height: 150px;
+  height: 384px;
   overflow-y: auto;
 }
 
