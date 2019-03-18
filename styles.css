@@ -1,13 +1,11 @@
-.drawing > *{
-  vertical-align:top;
-}
-
 #image-canvas{
+  vertical-align:top;
   border:1px solid #000000; 
   margin-top:1em;
 }
 
 .vertical-menu {
+  vertical-align:top;
   border:1px solid #000000; 
   width: 200px;
   height: 150px;
