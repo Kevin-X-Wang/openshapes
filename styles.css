@@ -1,5 +1,13 @@
+.drawing {
+  vertical-align:top;
+}
+
+#image-canvas{
+  border:1px solid #000000; 
+  margin-top:1em;
+}
+
 .vertical-menu {
-  display:inline-block;
   width: 200px;
   height: 150px;
   overflow-y: auto;
