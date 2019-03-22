@@ -3,6 +3,31 @@
   position:relative;
 }
 
+#paint-tools{
+  display: inline-block;
+  vertical-align:top;
+  margin-top:1em;
+}
+
+#paint-tools a {
+  border:0.5px solid #000000; 
+  background-color: #fff;
+  color: black;
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+}
+
+#paint-tools a:hover {
+  background-color: #666;
+  cursor:pointer;
+}
+
+#paint-tools a.active-tool {
+  background-color: #666;
+  color: white;
+}
+
 #image-canvas{
   display:inline-block;
   vertical-align:top;
@@ -32,6 +57,7 @@
 
 #vertical-menu a:hover {
   background-color: #666;
+  cursor:pointer;
 }
 
 #vertical-menu a.active {
