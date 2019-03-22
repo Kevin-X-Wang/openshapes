@@ -1,3 +1,8 @@
+#draw{
+  text-align:center;
+  position:relative;
+}
+
 #image-canvas{
   display:inline-block;
   vertical-align:top;
@@ -5,7 +10,7 @@
   margin-top:1em;
 }
 
-.vertical-menu {
+#vertical-menu {
   display:inline-block;
   margin-top:1em;
   margin-left:0.5em;
@@ -16,11 +21,20 @@
   overflow-y: auto;
 }
 
-.vertical-menu a {
+#vertical-menu a {
   border-bottom:0.5px solid #000000; 
   background-color: #fff;
   color: black;
   display: block;
   padding: 12px;
   text-decoration: none;
+}
+
+#vertical-menu a:hover {
+  background-color: #666;
+}
+
+#vertical-menu a.active {
+  background-color: #666;
+  color: white;
 }

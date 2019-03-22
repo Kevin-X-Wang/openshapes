@@ -2,41 +2,44 @@
 <html>
 <head>
   <link rel="stylesheet" href="styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
 
-<h1>OpenShapes</h1>
+  <h1 style="text-align:center;">OpenShapes</h1>
+  <div class = "buttons" style="text-align:center;">
+      <button>
+      Drawing</button>
 
-<div class = "buttons">
-  <button>
-  Drawing</button>
+      <button>
+      Image</button>
 
-  <button>
-  Image</button>
+      <button>
+      Finalize</button>
 
-  <button>
-  Finalize</button>
+      <button>
+      Edit</button>
+    </div>
 
-  <button>
-  Edit</button>
-</div>
+  <div id = "draw">
+    <canvas id = "image-canvas" width="512" height="384"></canvas>
 
-<div class="drawing">
-  <canvas id = "image-canvas" width="512" height="384"></canvas>
-
-  <div class="vertical-menu">
-    <a href="#">Image 1</a>
-    <a href="#">Image 2</a>
-    <a href="#">Image 3</a>
-    <a href="#">Image 4</a>
-    <a href="#">Image 5</a>
-    <a href="#">Image 6</a>
-    <a href="#">Image 7</a>
-    <a href="#">Image 8</a>
-    <a href="#">Image 9</a>
-    <a href="#">Image 10</a>
+    <div id="vertical-menu">
+      <a href="#">Sky</a>
+      <a href="#">Mountains</a>
+      <a href="#">Trees</a>
+      <a href="#">Person</a>
+      <a href="#">Water</a>
+      <a href="#">Hills</a>
+      <a href="#">Snow</a>
+      <a href="#">Clouds</a>
+      <a href="#">Elephant</a>
+      <a href="#">Dirt</a>
+    </div>
   </div>
-</div>
+  <script src="menu.js"></script>
+  <script src="canvas.js"></script>
+
   
 </body>
 </html> 
