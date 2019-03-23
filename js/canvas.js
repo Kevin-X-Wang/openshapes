@@ -2,6 +2,9 @@
 //http://www.williammalone.com/articles/create-html5-canvas-javascript-drawing-app/
 
 ctx = document.getElementById('image-canvas').getContext("2d");
+var canvasWidth = ctx.canvas.clientWidth;
+var canvasHeight = ctx.canvas.clientHeight;
+
 var currX, currY, prevX, prevY;
 var paint = false;
 var out = false;
@@ -30,6 +33,10 @@ function initMenu(){
   var tools = document.getElementById("draw").querySelector("#paint-tools");
     //console.log(header.length)
   var btns = tools.getElementsByTagName('a');
+  var uncl = tools.getElementsByTagName('b');
+  uncl[1].addEventListener("click", function() {
+      ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+  });
   //console.log(btns)
     //console.log(btns.length)
   for (var i = 0; i < btns.length; i++) {
