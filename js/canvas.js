@@ -4,8 +4,10 @@
 ctx = document.getElementById('image-canvas').getContext("2d");
 var currX, currY, prevX, prevY;
 var paint = false;
+var out = false;
 var currColor = "#7ec0ee";
 var currTool = "brush";
+var toolArray = ["brush", "bucket", "eraser"]
 var colorArray = ["#7ec0ee", "#838b8b", "#8b7355", "#ffebcd", "#0000ff",
                   "#458b00", "#fcfcfc", "#fff8dc", "#7d7d7d", "#8b6508"]
 
@@ -35,7 +37,7 @@ function initMenu(){
       var current = document.getElementsByClassName("active-tool"); 
       current[0].className = current[0].className.replace("active-tool", "");
       this.className += " active-tool";
-      //console.log($('a.active').index())
+      currTool = toolArray[($('a.active-tool').index())]
     });
   }
 }
@@ -43,11 +45,22 @@ function initMenu(){
 function draw(){
   //ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height); // Clears the canva
 
-  if(paint) {
+  if(paint && currTool == "brush") {
     ctx.beginPath();
     ctx.moveTo(prevX, prevY);
     ctx.lineTo(currX, currY);
     ctx.strokeStyle = currColor;
+    ctx.lineWidth = 5;
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+    ctx.stroke();
+    ctx.closePath();
+  }
+  else if(paint && currTool == "eraser") {
+    ctx.beginPath();
+    ctx.moveTo(prevX, prevY);
+    ctx.lineTo(currX, currY);
+    ctx.strokeStyle = "#ffffff";
     ctx.lineWidth = 5;
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
