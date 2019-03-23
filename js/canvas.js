@@ -14,16 +14,6 @@ var currTool = "brush";
 var toolArray = ["brush", "bucket", "bound", "eraser"]
 var colorArray = ["#7ec0ee", "#838b8b", "#8b7355", "#ffebcd", "#0000ff",
 "#458b00", "#fcfcfc", "#fff8dc", "#7d7d7d", "#8b6508"]
-
-var clickX = [];
-var clickY = [];
-var clickDrag = [];
-var clickColor = [];
-
-var finalX = [];
-var finalY = [];
-var finalDrag = [];
-var finalColor = [];
 var paint;
 
 
@@ -76,23 +66,7 @@ function initMenu(){
   //setting the clear button
   var clear = tools.getElementsByTagName('b');
   clear[0].addEventListener("click", function(){
-    undo();
-    clickX = [];
-    clickY = [];
-    clickDrag = [];
-    clickColor = [];
-  })
-  clear[1].addEventListener("click", function(){
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-
-    clickX = [];
-    clickY = [];
-    clickDrag = [];
-    clickColor = [];
-    finalX = [];
-    finalY = [];
-    finalDrag = [];
-    finalColor = [];
   })
   //console.log(btns)
     //console.log(btns.length)
@@ -147,31 +121,8 @@ function draw(){
   }
 }
 
-//function to save current movements
-function addClick(x, y, dragging){
-  clickX.push(x);
-  clickY.push(y);
-  clickDrag.push(dragging);
-  if(currTool == "eraser"){
-    clickColor.push("#ffffff");
-  }
-  else{
-    clickColor.push(currColor);
-  }
-}
-
 //what to do on mousedown, mousemove, etc
 $('#image-canvas').mousedown(function(e){
-  finalY = finalY.concat(clickY);
-  finalX = finalX.concat(clickX);
-  finalDrag = finalDrag.concat(clickDrag);
-  finalColor = finalColor.concat(clickColor);
-
-  clickY = [];
-  clickX = [];
-  clickDrag = [];
-  clickColor = [];
-
 
   var offsetTop = this.getBoundingClientRect().top
   var offsetLeft = this.getBoundingClientRect().left
@@ -180,7 +131,6 @@ $('#image-canvas').mousedown(function(e){
   prevY = currY;
   currX = e.pageX - offsetLeft;
   currY = e.pageY - offsetTop;
-  addClick(e.pageX - offsetLeft, e.pageY - offsetTop);
   draw();
 });
 
@@ -191,9 +141,6 @@ $('#image-canvas').mousemove(function(e){
   prevY = currY;
   currX = e.pageX - offsetLeft;
   currY = e.pageY - offsetTop;
-  if(paint && !out){
-    addClick(e.pageX - offsetLeft, e.pageY - offsetTop, true);
-  }
   draw();
 });
 
