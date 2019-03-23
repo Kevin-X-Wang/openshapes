@@ -6,7 +6,9 @@ ctx = document.getElementById('image-canvas').getContext("2d");
 var canvasWidth = ctx.canvas.clientWidth;
 var canvasHeight = ctx.canvas.clientHeight;
 
-var currX, currY, prevX, prevY;
+ctx2 = document.getElementById('canvas2').getContext("2d");
+
+var currX, currY, prevX, prevY, startX, startY;
 var paint = false;
 var out = false;
 var currColor = "#7ec0ee";
@@ -14,37 +16,10 @@ var currTool = "brush";
 var toolArray = ["brush", "bucket", "bound", "eraser"]
 var colorArray = ["#7ec0ee", "#838b8b", "#8b7355", "#ffebcd", "#0000ff",
 "#458b00", "#fcfcfc", "#fff8dc", "#7d7d7d", "#8b6508"]
-var paint;
-
-
-function undo(){
-  ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height); // Clears the canvas
-
-  ctx.lineJoin = "round";
-  ctx.lineCap = "round";
-  ctx.lineWidth = 5;
-  var l = finalX.length;
-  
-  if(l > 0){
-    for(var i=0; i < finalX.length; i++) {    
-      ctx.beginPath();
-      if(finalDrag[i] && i){
-        ctx.moveTo(finalX[i-1], finalY[i-1]);
-      }
-      else{
-        ctx.moveTo(finalX[i]-1, finalY[i]);
-      }
-      ctx.lineTo(finalX[i], finalY[i]);
-      ctx.strokeStyle = finalColor[i];
-      ctx.closePath();
-      ctx.stroke();
-    }
-  }
-}
 
 //function to initialize the buttons on the menu and the tools
 function initMenu(){
-  var menu = document.getElementById("draw").querySelector("#vertical-menu");
+    var menu = document.getElementById("draw").querySelector("#vertical-menu");
     //console.log(header.length)
     var btns = menu.getElementsByTagName('a');
   //console.log(btns)
@@ -54,7 +29,7 @@ function initMenu(){
         var current = document.getElementsByClassName("active"); 
         current[0].className = current[0].className.replace("active", "");
         this.className += " active";
-        currColor = colorArray[$('a.active').index()]
+        currColor = colorArray[$('a.active').index()];
       //console.log($('a.active').index())
     });
     }
@@ -123,15 +98,24 @@ function draw(){
 
 //what to do on mousedown, mousemove, etc
 $('#image-canvas').mousedown(function(e){
-
+  paint = true;
   var offsetTop = this.getBoundingClientRect().top
   var offsetLeft = this.getBoundingClientRect().left
-  paint = true;
   prevX = currX;
   prevY = currY;
   currX = e.pageX - offsetLeft;
   currY = e.pageY - offsetTop;
-  draw();
+  if(currTool == "bound"){
+    ctx2.clearRect(0, 0, canvasWidth, canvasHeight);
+    startX = currX;
+    startY = currY;
+    $("#canvas2").css({
+        zIndex:2
+    });
+  }
+  else{
+    draw();
+  }
 });
 
 $('#image-canvas').mousemove(function(e){

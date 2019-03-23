@@ -39,12 +39,28 @@
   cursor:pointer;
 }
 
-
-#image-canvas{
+#canvas-wrapper{
   display:inline-block;
+  position:relative;
   vertical-align:top;
   border:1px solid #000000; 
   margin-top:1em;
+  width:512px;
+  height:384px;
+}
+
+#image-canvas, #canvas2{
+  position:absolute;
+  top:0px;
+  left:0px;
+}
+
+#image-canvas{
+  z-index: 1;
+}
+
+#canvas2{
+  z-index: -1;
 }
 
 #vertical-menu {
@@ -60,7 +76,6 @@
 
 #vertical-menu a {
   border-bottom:0.5px solid #000000; 
-  background-color: #fff;
   color: black;
   display: block;
   padding: 12px;
