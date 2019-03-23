@@ -198,8 +198,10 @@ $('#image-canvas').mousemove(function(e){
 });
 
 $(document).mousedown(function(e){
-  paint = true;
-  out = true;
+  if(!paint){
+    paint = true;
+    out = true;
+  }
 });
 
 $(document).mouseup(function(e){
