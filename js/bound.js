@@ -25,5 +25,6 @@ $("#canvas2").mouseup(function(e){
   $("#canvas2").css({
         zIndex:-1
   });
+  ctx2.clearRect(0, 0, canvas2.width, canvas2.height);
   drawRect(mouseX, mouseY, ctx);
 })
