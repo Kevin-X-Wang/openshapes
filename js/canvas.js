@@ -140,5 +140,5 @@ $(document).mouseup(function(e){
 });
 
 $('#image-canvas').mouseleave(function(e){
-	out = true;
+  out = true;
 });
