@@ -1,21 +1,15 @@
-function imageMatch(){
-  /*
-  var img = new Image();
-  var imgWidth = img.height;
-  var imgHeight = img.width;
-  ratio = imgWidth/imgHeight;
-  bound = 0.1 * ratio
-  */
-    dir = "../templates/"
-    var extension = ".svg"
-    $.ajax({
-        url: dir,
-        type: "Get",
-        async: false,
-        success: function (data) {
-          $(data).find("a:contains(.png)").each(function(){
-            console.log(data)
+var folder = "../images/";
+
+function matchDims(dimRatio){
+  var bound = dimRatio * 0.1
+  $.ajax({
+      url : folder,
+      success: function (data) {
+          $(data).find("a").attr("href", function (i, val) {
+              if( val.match(/\.(svg)$/) ) {
+                  console.log(folder + val)
+              }
           });
-        }
-    });
-};
+      }
+  });
+}
