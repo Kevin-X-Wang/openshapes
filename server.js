@@ -6,7 +6,7 @@ app = express();
 app.use('/', express.static(__dirname + '/'));
 
 var path = "./templates/"
-var port = 8080
+server.listen(process.env.PORT || 8080);
 
 function imageMatch(dimRatio){
   fs.readdir(path, function(err, items) {
