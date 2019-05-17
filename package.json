@@ -10,10 +10,17 @@
     "type": "git",
     "url": "git+https://github.com/Kevin-X-Wang/openshapes.git"
   },
-  "author": "",
+  "author": "Kevin Wang",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Kevin-X-Wang/openshapes/issues"
   },
-  "homepage": "https://github.com/Kevin-X-Wang/openshapes#readme"
+  "homepage": "https://github.com/Kevin-X-Wang/openshapes#readme",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "requirejs": "^2.3.6",
+    "express": "^4.16.4",
+    "browserify": "^16.2.3"
+  },
+  "devDependencies": {}
 }

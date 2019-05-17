@@ -5,6 +5,24 @@ function drawRect(toX, toY, context) {
     context.stroke();
 }
 
+function passParams(width, height){
+    $.ajax({
+      url: "/ImageMatch",
+      type: "get", //send it through get method
+      data: {
+        Width: width,
+        Height: height
+      },
+      success: function(response) {
+        //Do Something
+      },
+      error: function(xhr) {
+        //Do Something to handle error
+      }
+    });
+}
+
+
 $("#canvas2").mousemove(function(e){
     var offsetTop = this.getBoundingClientRect().top
     var offsetLeft = this.getBoundingClientRect().left
@@ -27,4 +45,5 @@ $("#canvas2").mouseup(function(e){
   });
   ctx2.clearRect(0, 0, canvas2.width, canvas2.height);
   drawRect(mouseX, mouseY, ctx);
+  passParams(Math.abs(mouseX - startX), Math.abs(mouseY - startY));
 })
