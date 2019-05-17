@@ -1,6 +1,6 @@
 var express = require('express');
 var fs = require('fs');
-var https = require('https');
+var http = require('http');
 
 app = express();
 app.use('/', express.static(__dirname + '/'));
@@ -26,7 +26,7 @@ const httpsOptions = {
     cert: fs.readFileSync('./security/cert.pem')
 }
 
-const server = https.createServer(httpsOptions, app)
+const server = http.createServer(app)
     .listen(port, () => {
         console.log('server running at ' + port)
     })
